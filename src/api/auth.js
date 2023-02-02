@@ -4,9 +4,9 @@ let loggedUser = {};
 
 export async function signIn(email, password) {
     return users.find(element => {
-      const cicik = element.email === email && element.password === password
+      const validatedUser = element.email === email && element.password === password
 
-      if(cicik) {
+      if(validatedUser) {
         loggedUser = {
           id: 1,
           firstName: element.firstName,
@@ -19,7 +19,7 @@ export async function signIn(email, password) {
         localStorage.setItem('user', JSON.stringify(loggedUser))
       }
 
-      return cicik;
+      return validatedUser;
     })
       ?
       {
