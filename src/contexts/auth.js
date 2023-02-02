@@ -1,7 +1,6 @@
 import React, { useState, useEffect, createContext, useContext, useCallback } from 'react';
 import { getUser, signIn as sendSignInRequest } from '../api/auth';
 
-
 function AuthProvider(props) {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
@@ -28,6 +27,7 @@ function AuthProvider(props) {
 
   const signOut = useCallback(() => {
     setUser(undefined);
+    localStorage.removeItem('user');
   }, []);
 
 

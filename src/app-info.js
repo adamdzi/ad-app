@@ -1,5 +1,5 @@
 const appInfo = {
-    title: 'Ad App'
+    title: 'AD App'
 };
 export default appInfo;
 
