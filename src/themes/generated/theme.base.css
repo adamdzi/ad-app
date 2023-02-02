@@ -100,7 +100,7 @@
 }
 .dx-theme-material-typography h1 {
   font-weight: 300;
-  font-size: 96px;
+  font-size: 70px;
   letter-spacing: -1.5px;
 }
 .dx-theme-material-typography h2 {
@@ -1885,7 +1885,7 @@
   margin: 0;
 }
 .dx-theme-marker {
-  font-family: "dx.material.orange.light";
+  font-family: "dx.material.orange.dark";
 }
 .dx-theme-accent-as-text-color {
   color: #ff5722!important;

@@ -10,21 +10,22 @@ export default function UserPanel({ menuMode }) {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function navigateToProfile() {
     navigate("/profile");
   }
   const menuItems = useMemo(() => ([
     {
-      text: 'Profile',
+      text: 'Profil',
       icon: 'user',
       onClick: navigateToProfile
     },
     {
-      text: 'Logout',
+      text: 'Wyloguj',
       icon: 'runner',
       onClick: signOut
     }
-  ]), [signOut]);
+  ]), [navigateToProfile, signOut]);
   return (
     <div className={'user-panel'}>
       <div className={'user-info'}>

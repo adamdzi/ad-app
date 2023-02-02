@@ -1,45 +1,39 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './profile.scss';
 import Form from 'devextreme-react/form';
+import { useAuth } from './../../contexts/auth'; 
 
 export default function Profile() {
-  const [notes, setNotes] = useState(
-    'Sandra is a CPA and has been our controller since 2008. She loves to interact with staff so if you`ve not met her, be certain to say hi.\r\n\r\nSandra has 2 daughters both of whom are accomplished gymnasts.'
-  );
-  const employee = {
-    ID: 7,
-    FirstName: 'Sandra',
-    LastName: 'Johnson',
-    Prefix: 'Mrs.',
-    Position: 'Controller',
-    Picture: 'images/employees/06.png',
-    BirthDate: new Date('1974/11/5'),
-    HireDate: new Date('2005/05/11'),
-    Notes: notes,
-    Address: '4600 N Virginia Rd.'
+  const { user } = useAuth();
+
+  const loggedUser = {
+    Imię: user.firstName,
+    Nazwisko: user.lastName,
+    Email: user.email,
+    Pozycja: user.position,
+    Szkoła: user.school,
+    Avatar: user.avatarUrl
   };
 
   return (
     <React.Fragment>
-      <h2 className={'content-block'}>Profile</h2>
-
+      <h2 className={'content-block'}>Profil</h2>
       <div className={'content-block dx-card responsive-paddings'}>
         <div className={'form-avatar'}>
           <img
             alt={''}
-            src={`https://js.devexpress.com/Demos/WidgetsGallery/JSDemos/${
-              employee.Picture
-            }`}
+            src={loggedUser.Avatar}
           />
         </div>
-        <span>{notes}</span>
+        <div>
+          <h2>{`${loggedUser.Imię} ${loggedUser.Nazwisko}`}</h2>
+        </div>
       </div>
 
       <div className={'content-block dx-card responsive-paddings'}>
         <Form
           id={'form'}
-          defaultFormData={employee}
-          onFieldDataChanged={e => e.dataField === 'Notes' && setNotes(e.value)}
+          defaultFormData={loggedUser}
           labelLocation={'top'}
           colCountByScreen={colCountByScreen}
         />
